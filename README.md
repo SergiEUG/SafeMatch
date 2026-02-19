@@ -413,4 +413,4 @@ Para preguntas sobre el proyecto académico:
 
 ---
 
-**Desarrollado con ❤️ como proyecto final de DAW 2023-2024**
+**Desarrollado con ❤️ como proyecto final de DAW 2025-2026**
