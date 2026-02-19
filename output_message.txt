@@ -1,0 +1,1 @@
+I have removed the 'bg-black' class from the SwipeCard component. Please check if the image is now visible in the modal. If it is, how is it positioned? (e.g., "visible and correctly centered", "visible but at the top left", etc.)

@@ -1,0 +1,569 @@
+/* Global Color Definitions (for clarity, used directly below) */
+/* Purple: #5b21b6 */
+/* Pink-600: #db2777 */
+/* Pink-500: #ec4899 */
+/* Red-600: #dc2626 */
+/* Red-500: #ef4444 */
+/* White: #ffffff */
+/* Gray-200: #e5e7eb */
+/* Gray-600: #4b5563 */
+/* Gray-700: #374151 */
+/* Gray-800: #1f2937 */
+
+/* Global Layout for Auth/App Pages */
+.login-page-container { /* Reusing for app pages to get immersive background */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem; /* p-4 */
+    position: relative;
+    overflow: hidden;
+}
+
+@media (min-width: 640px) { /* sm:p-6 */
+    .login-page-container {
+        padding: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) { /* lg:p-8 */
+    .login-page-container {
+        padding: 2rem;
+    }
+}
+
+/* Immersive Background */
+.immersive-bg {
+    position: absolute;
+    inset: 0; /* top:0; right:0; bottom:0; left:0; */
+    background: linear-gradient(to bottom right, #5b21b6, #db2777, #ef4444);
+    z-index: 0;
+}
+
+.abstract-pattern-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    opacity: 0.1;
+    background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm10-20h2v12h-2v-12zm-10 0h2v12h-2v-12zm-10 0h2v12h-2v-12zm-10 0h2v12h-2v-12zM36 0v-2h-2v2h-4v2h4v4h2V4h4V2h-4zM36 40v-2h-2v2h-4v2h4v4h2v-4h4v-2h-4zM0 0h2v12h-2v-12zM0 40h2v12h-2v-12z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+}
+
+/* Central Glassmorphism Card for Auth and Discover */
+.login-card { /* Using this for Discover too, for consistency */
+    position: relative;
+    z-index: 20;
+    width: 100%;
+    max-width: 28rem; /* default for mobile */
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 1.5rem; /* rounded-3xl */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 10px 15px rgba(0, 0, 0, 0.1); /* softer shadow */
+    padding: 2rem; /* p-8 */
+    color: #ffffff; /* Default white text color */
+    overflow: hidden;
+    
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    animation: fade-in-zoom-in 0.7s ease-out; /* animate-in fade-in zoom-in duration-700 */
+}
+
+@media (min-width: 768px) { /* md: */
+    .login-card {
+        max-width: 36rem; /* Slightly wider on medium screens */
+        padding: 2.5rem;
+    }
+}
+
+@media (min-width: 1024px) { /* lg: */
+    .login-card {
+        max-width: 40rem; /* Wider on large screens for desktop optimization */
+        padding: 3rem;
+    }
+}
+
+/* Card Header (for Login/Register/Discover) */
+.card-header {
+    margin-bottom: 2rem; /* mb-8 */
+    text-align: center;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem; /* mb-4 */
+}
+
+.brand-logo .heart-icon-wrapper {
+    width: 4rem; /* w-16 */
+    height: 4rem; /* h-16 */
+    background-color: #ffffff; /* bg-white */
+    border-radius: 9999px; /* rounded-full */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+    margin-right: 0.75rem; /* mr-3 */
+}
+
+.brand-logo .heart-icon {
+    height: 2.25rem; /* h-9 */
+    width: 2.25rem; /* w-9 */
+    color: #db2777; /* text-pink-600 */
+    fill: #db2777; /* fill-pink-600 */
+}
+
+.brand-logo .app-title {
+    font-size: 2.25rem; /* text-4xl */
+    font-weight: 800; /* font-extrabold */
+    letter-spacing: -0.05em; /* tracking-tight */
+    color: #ffffff; /* Ensure title is white */
+}
+
+.card-subtitle {
+    font-size: 1.125rem; /* text-lg */
+    color: rgba(255, 255, 255, 0.8); /* text-white text-opacity-80 */
+}
+
+/* Form Styling (for Login/Register) */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* space-y-6 */
+}
+
+.error-message {
+    padding: 1rem; /* p-4 */
+    font-size: 0.875rem; /* text-sm */
+    border-radius: 0.75rem; /* rounded-xl */
+    background-color: #fef2f2; /* bg-red-50 */
+    color: #b91c1c; /* text-red-600 */
+    border: 1px solid #fecaca; /* border-red-100 */
+    display: flex;
+    align-items: center;
+    animation: shake 0.3s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+.error-message svg {
+    height: 1.25rem; /* h-5 */
+    width: 1.25rem; /* w-5 */
+    margin-right: 0.75rem; /* mr-3 */
+    color: #ef4444; /* text-red-500 */
+}
+
+.form-field label {
+    display: block;
+    font-size: 0.875rem; /* text-sm */
+    font-weight: 500; /* font-medium */
+    color: #ffffff; /* Label color white */
+    margin-bottom: 0.25rem; /* mb-1 */
+}
+
+.form-field input,
+.form-field select {
+    width: 100%;
+    padding: 0.5rem 1rem; /* px-4 py-2 */
+    background-color: rgba(255, 255, 255, 0.1); /* bg-white/10 */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* border-white/20 */
+    border-radius: 0.5rem; /* rounded-lg */
+    color: #ffffff; /* Input text color white */
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    -webkit-appearance: none; /* remove default form styles */
+    -moz-appearance: none;
+    appearance: none;
+}
+.form-field input.has-icon { /* For inputs with icons, add left padding */
+    padding-left: 2.75rem; /* pl-11 to account for icon */
+}
+
+.form-field input::placeholder {
+    color: rgba(255, 255, 255, 0.7); /* Placeholder color white with opacity */
+}
+
+.form-field input:focus,
+.form-field select:focus {
+    outline: none;
+    border-color: #ffffff; /* Focus border white */
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25); /* Focus ring white with opacity */
+}
+
+.password-input-wrapper {
+    position: relative;
+}
+
+.password-input-wrapper .toggle-visibility-btn {
+    position: absolute;
+    inset-y: 0; /* top:0; bottom:0; */
+    right: 0;
+    padding-right: 0.75rem; /* pr-3 */
+    display: flex;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.8); /* Toggle button color white */
+    cursor: pointer;
+    background: none;
+    border: none;
+    transition: color 0.15s ease-in-out;
+}
+
+.password-input-wrapper .toggle-visibility-btn:hover {
+    color: #ffffff; /* Toggle button hover white */
+}
+
+.password-input-wrapper .toggle-visibility-btn:focus {
+    outline: none;
+}
+
+.password-input-wrapper .toggle-visibility-btn svg {
+    height: 1.25rem; /* h-5 */
+    width: 1.25rem; /* w-5 */
+}
+
+/* Login Button */
+.login-button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.75rem 1rem; /* px-4 py-3 */
+    border: 1px solid transparent;
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-lg */
+    font-size: 1.125rem; /* text-lg */
+    font-weight: 600; /* font-semibold */
+    color: #ffffff; /* text-white */
+    background: linear-gradient(to right, #dc2626, #db2777); /* from-red-600 to-pink-600 */
+    transition: background-position 0.3s ease-in-out, box-shadow 0.15s ease-in-out;
+    background-size: 200% auto; /* For hover gradient animation */
+    cursor: pointer;
+}
+
+.login-button:hover:not(:disabled) {
+    background-position: right center; /* Shift gradient on hover */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.login-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5); /* focus:ring-white */
+}
+
+.login-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.login-button .loader-icon {
+    height: 1.25rem; /* h-5 */
+    width: 1.25rem; /* w-5 */
+    margin-right: 0.5rem; /* mr-2 */
+    animation: spin 1s linear infinite;
+}
+
+.login-button .arrow-icon {
+    margin-left: 0.5rem; /* ml-2 */
+    height: 1.25rem; /* h-5 */
+    width: 1.25rem; /* w-5 */
+}
+
+/* Registration Button (New) */
+.register-button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ffffff; /* White border */
+    border-radius: 0.5rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #ffffff;
+    background: transparent;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, box-shadow 0.15s ease-in-out;
+    cursor: pointer;
+}
+
+.register-button:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle white background on hover */
+    color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.register-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+}
+
+
+/* Footer Links */
+.card-footer {
+    margin-top: 2rem; /* mt-8 */
+    text-align: center;
+    font-size: 0.875rem; /* text-sm */
+}
+
+.card-footer p {
+    color: rgba(255, 255, 255, 0.8); /* text-white text-opacity-80 */
+    margin-bottom: 0.5rem; /* mb-2 */
+}
+
+.card-footer a {
+    font-weight: 500; /* font-medium */
+    color: #ffffff; /* text-white */
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: color 0.15s ease-in-out;
+}
+
+.card-footer a:hover {
+    color: #e5e7eb; /* text-gray-200 */
+}
+
+/* Styling for DiscoverView */
+.discover-view-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Allow to take available space */
+}
+
+/* Top Nav (Discover) */
+.discover-top-nav {
+  position: relative;
+  padding: 1rem 1rem; /* Adjust padding for glassmorphism card */
+  display: flex;
+  justify-content: space-between; /* Align items to space between */
+  align-items: center;
+  background: rgba(255, 255, 255, 0.7); /* Adjust as needed for card background */
+  backdrop-filter: blur(10px); /* Reuse card blur */
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  z-index: 10;
+  border-radius: 1rem 1rem 0 0; /* Rounded top corners only if it's the top of the card */
+  margin-bottom: 1rem; /* Space between nav and content */
+}
+
+.discover-top-nav .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Montserrat', sans-serif; /* Using a specific font, ensure it's loaded */
+}
+
+.discover-top-nav .logo-icon {
+  font-size: 1.5rem; /* Slightly smaller than login logo for header */
+  color: #db2777; /* Pink-600 */
+  animation: float 3s ease-in-out infinite; /* Reuse float animation */
+}
+
+.discover-top-nav .logo-text {
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: #333333; /* Darker text for top nav against lighter background */
+  letter-spacing: -0.5px;
+}
+
+/* Loading State (Discover) */
+.loading-state {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem; /* p-10 */
+  z-index: 5;
+  color: #ffffff; /* Default text color */
+}
+
+.skeleton-card {
+  position: relative;
+  width: 100%;
+  max-width: 25rem; /* max-w-md */
+  height: 37.5rem; /* 600px */
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  border-radius: 1.5rem; /* rounded-3xl */
+  overflow: hidden;
+  animation: shimmer 2s linear infinite;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* shadow-xl */
+}
+
+.loading-state .loading-text {
+  margin-top: 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+}
+
+.loading-state span[class^="dot-"] {
+  animation: dotPulse 1.5s ease-in-out infinite;
+}
+
+.loading-state .dot-1 { animation-delay: 0s; }
+.loading-state .dot-2 { animation-delay: 0.2s; }
+.loading-state .dot-3 { animation-delay: 0.4s; }
+
+/* Card container (Discover) */
+.discover-card-display { /* Renamed from card-container to avoid conflict */
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  padding-bottom: 2rem; /* Adjusted for potential bottom nav */
+  z-index: 5;
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Empty State (Discover) */
+.empty-state { /* Renamed from no-profiles */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem;
+  text-align: center;
+  z-index: 5;
+  color: #ffffff; /* White text for empty state */
+}
+
+.empty-state .empty-animation {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.empty-state .empty-icon {
+  font-size: 5rem;
+  animation: float 3s ease-in-out infinite;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+}
+
+.empty-state .particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ef4444; /* Red-500 */
+  opacity: 0.6;
+}
+
+.empty-state .particle-1 {
+  top: 20%;
+  left: -20px;
+  animation: particleFloat 3s ease-in-out infinite;
+}
+
+.empty-state .particle-2 {
+  top: 50%;
+  right: -30px;
+  animation: particleFloat 3s ease-in-out infinite 0.5s;
+}
+
+.empty-state .particle-3 {
+  bottom: 20%;
+  left: 10px;
+  animation: particleFloat 3s ease-in-out infinite 1s;
+}
+
+.empty-state h3 {
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: #ffffff; /* White text */
+  margin-bottom: 0.75rem;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.empty-state p {
+  color: rgba(255, 255, 255, 0.8); /* White translucent */
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 320px;
+  margin-bottom: 0;
+}
+
+.refresh-button {
+  margin-top: 2rem;
+  padding: 0.875rem 2rem;
+  background: linear-gradient(to right, #dc2626, #db2777); /* Red-600 to Pink-600 */
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(253, 38, 125, 0.3); /* shadow-primary */
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease-in-out; /* transition-base */
+}
+
+.refresh-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(253, 38, 125, 0.4); /* shadow-primary-lg */
+}
+
+.refresh-button:active {
+  transform: translateY(0);
+}
+
+.refresh-button svg {
+  transition: transform 0.3s ease-in-out; /* transition-base */
+}
+
+.refresh-button:hover svg {
+  transform: rotate(180deg);
+}
+
+/* Keyframes */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fade-in-zoom-in {
+  0% { opacity: 0; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes gradientShift { /* Specific to Discover animated background */
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes shimmer { /* Specific to Discover skeleton card */
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes dotPulse { /* Specific to Discover loading text */
+  0%, 60%, 100% { opacity: 1; }
+  30% { opacity: 0.3; }
+}
+
+@keyframes float { /* Reused for empty icon/logo */
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes particleFloat { /* Specific to Discover empty state */
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.6; }
+  50% { transform: translateY(-20px) scale(1.2); opacity: 0.3; }
+}
